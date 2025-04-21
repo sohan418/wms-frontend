@@ -1,0 +1,86 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.login-form input.error {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4361ee;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.login-links {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.login-links a {
+  color: #4361ee;
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px;
+    margin: 15px;
+  }
+}
