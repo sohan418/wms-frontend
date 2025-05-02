@@ -1,0 +1,86 @@
+/* .data-table-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.data-table {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.table-header {
+  background: var(--sidebar-bg);
+}
+
+.table-row:hover {
+  background: var(--primary-color);
+}
+
+.data-table th {
+  background: var(--primary-color);
+  color: var(--bg-color);
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tr:hover {
+  background: var(--primary-color);
+  color: var(--bg-color);
+}
+
+.pagination-controls {
+  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination-controls button {
+  background: var(--bg-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.pagination-controls button:not(:disabled):hover {
+  background: var(--primary-color);
+  color: var(--bg-color);
+}
+
+.sortable:hover {
+  background: var(--primary-color);
+}
+
+.sort-arrow {
+  margin-left: 8px;
+}
+
+.pagination-controls {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--sidebar-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-controls button:not(:disabled):hover {
+  background: var(--primary-color);
+  color: var(--bg-color);
+  border-color: transparent;
+  transform: translateY(-1px);
+} */

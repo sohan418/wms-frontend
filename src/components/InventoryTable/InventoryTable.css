@@ -1,0 +1,74 @@
+/* Add these styles to your existing inventory table CSS */
+
+.inventory-table-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.table-header {
+  background: #4361ee;
+  color: white;
+  font-weight: 600;
+}
+
+.header-cell {
+  padding: 16px 24px;
+  transition: background 0.2s ease;
+}
+
+.header-cell:hover {
+  background: #374fc7;
+  cursor: pointer;
+}
+
+.table-row {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.table-row:hover {
+  transform: translateX(4px);
+  box-shadow: 4px 0 0 #4361ee inset;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status.in-stock {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status.low-stock {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.status.archived {
+  background: #fbe9e7;
+  color: #d32f2f;
+}
+
+/* Pagination styling */
+.pagination button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.pagination button:not(:disabled):hover {
+  background: #4361ee;
+  color: white;
+}
+
+.pagination span {
+  color: #64748b;
+}

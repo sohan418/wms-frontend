@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
-
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: black;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +40,61 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* Pagination styles (light theme example) */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 16px;
+  gap: 8px;
+}
+
+.pagination-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #18181b;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background: #ede9fe;
+  border-color: #4f46e5;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0 8px;
+}
+
+/* Dark theme overrides for pagination */
+[data-theme="dark"] .pagination-button {
+  background: #232336;
+  color: #f3f4f6;
+  border-color: #232336;
+}
+
+[data-theme="dark"] .pagination-button:hover:not(:disabled) {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+}
+
+[data-theme="dark"] .pagination-info {
+  color: #a1a1aa;
 }

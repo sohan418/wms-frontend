@@ -1,39 +1,41 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import './Layout.css';
 import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from '../../contexts/ThemeContext';  // Fixed path
 
-const Layout = ({ children }) => {
-  const [isMobile, setIsMobile] = useState(false);
+export const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Mobile detection
+  const handleToggle = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   useEffect(() => {
     const checkMobile = () => {
-      const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
-      if (!mobile) setSidebarOpen(false);
+      setIsMobile(window.innerWidth <= 768);
     };
-    
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Toggle handler
-  const handleToggle = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
   return (
-    <div className="app-container">
-      <Navbar onMenuClick={handleToggle} isMobile={isMobile} />
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className={`main-content ${sidebarOpen ? 'sidebar-open' : ''}`}>
-        <Outlet />
+    <ThemeProvider>
+      <div className="app-container">
+        <Navbar onMenuClick={handleToggle} isMobile={isMobile} />
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        {/* Overlay for mobile */}
+        {isMobile && sidebarOpen && (
+          <div  onClick={() => setSidebarOpen(false)} />
+        )}
+        <div className={`main-content${sidebarOpen && isMobile ? ' sidebar-open' : ''}`}>
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

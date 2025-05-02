@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
+import logo from '../../logo.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ const Login = () => {
     if (Object.keys(validationErrors).length === 0) {
       // Add actual authentication logic here
       console.log('Login attempted with:', { email, password });
-      navigate('/');
+      navigate('/dashboard');
     } else {
       setErrors(validationErrors);
     }
@@ -33,8 +34,8 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <img src="/logo.png" alt="Company Logo" className="logo" />
-          <h1>Warehouse Management System</h1>
+          <img src={logo} alt="Company Logo" className="logo" />
+          <h4>Warehouse Management System</h4>
         </div>
         
         <form onSubmit={handleSubmit} className="login-form">

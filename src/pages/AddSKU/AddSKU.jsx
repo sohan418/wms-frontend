@@ -1,138 +1,151 @@
 import React, { useState } from 'react';
 import './AddSKU.css';
 import { Link } from 'react-router-dom';
-
+import Button from '../../components/Button/Button';
+import { Input } from '../../components/Form/Input';
+import { Dropdown } from '../../components/Form/Dropdown';
+import { RadioGroup } from '../../components/Form/RadioGroup';
 const AddSKU = () => {
   const [formData, setFormData] = useState({
     sku: '',
     name: '',
-    description: '',
-    quantity: '',
     category: '',
+    quantity: '',
+    unit: 'each',
+    minStock: '',
     location: '',
-    supplier: ''
+    supplier: '',
+    barcode: '',
+    expiryDate: '',
+    status: 'active',
+    description: ''
   });
-  const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.sku) newErrors.sku = 'SKU is required';
-    if (!formData.name) newErrors.name = 'Product name is required';
-    if (!formData.quantity || isNaN(formData.quantity)) 
-      newErrors.quantity = 'Valid quantity is required';
-    return newErrors;
-  };
+  const categoryOptions = [
+    { value: 'raw-material', label: 'Raw Material' },
+    { value: 'finished-good', label: 'Finished Good' },
+    { value: 'consumable', label: 'Consumable' }
+  ];
+
+  const statusOptions = [
+    { value: 'active', label: 'Active' },
+    { value: 'inactive', label: 'Inactive' }
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length === 0) {
-      // Submit logic here
-      console.log('Form submitted:', formData);
-      setIsSubmitted(true);
-      setTimeout(() => setIsSubmitted(false), 3000);
-      setFormData({
-        sku: '',
-        name: '',
-        description: '',
-        quantity: '',
-        category: '',
-        location: '',
-        supplier: ''
-      });
-    } else {
-      setErrors(validationErrors);
-    }
+    // Add form submission logic here
+    console.log('Form submitted:', formData);
   };
 
   return (
-    <div className="add-sku-container">
-      <div className="form-header">
-        <Link to="/inventory" className="back-link">
-          &larr; Back to Inventory
-        </Link>
-        <h1>Add New SKU</h1>
-      </div>
+    <div className="sku-form-container">
+      <h1>Add New SKU</h1>
       
-      <form onSubmit={handleSubmit} className="sku-form">
+      <form onSubmit={handleSubmit}>
         <div className="form-grid">
-          <div className="form-group">
-            <label>SKU Number *</label>
-            <input
-              type="text"
-              value={formData.sku}
-              onChange={(e) => setFormData({...formData, sku: e.target.value})}
-            />
-            {errors.sku && <span className="error">{errors.sku}</span>}
-          </div>
+          {/* Row 1 */}
+          <Input
+            label="SKU Code"
+            type="text"
+            value={formData.sku}
+            onChange={(e) => setFormData({...formData, sku: e.target.value})}
+            required
+          />
+          <Input
+            label="Product Name"
+            type="text"
+            value={formData.name}
+            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            required
+          />
 
-          <div className="form-group">
-            <label>Product Name *</label>
-            <input
-              type="text"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-            />
-            {errors.name && <span className="error">{errors.name}</span>}
-          </div>
+          {/* Row 2 */}
+          <Dropdown
+            label="Category"
+            options={categoryOptions}
+            value={formData.category}
+            onChange={(e) => setFormData({...formData, category: e.target.value})}
+          />
+          <Input
+            label="Initial Quantity"
+            type="number"
+            value={formData.quantity}
+            onChange={(e) => setFormData({...formData, quantity: e.target.value})}
+            required
+          />
 
+          {/* Row 3 */}
+          <Dropdown
+            label="Unit of Measurement"
+            options={[
+              { value: 'each', label: 'Each' },
+              { value: 'kg', label: 'Kilogram' },
+              { value: 'liter', label: 'Liter' },
+              { value: 'meter', label: 'Meter' }
+            ]}
+            value={formData.unit}
+            onChange={(e) => setFormData({...formData, unit: e.target.value})}
+          />
+          <Input
+            label="Minimum Stock"
+            type="number"
+            value={formData.minStock}
+            onChange={(e) => setFormData({...formData, minStock: e.target.value})}
+          />
+
+          {/* Row 4 */}
+          <Input
+            label="Storage Location"
+            type="text"
+            value={formData.location}
+            onChange={(e) => setFormData({...formData, location: e.target.value})}
+          />
+          <Input
+            label="Supplier Contact"
+            type="email"
+            value={formData.supplier}
+            onChange={(e) => setFormData({...formData, supplier: e.target.value})}
+          />
+
+          {/* Row 5 */}
+          <Input
+            label="Barcode/UPC"
+            type="text"
+            value={formData.barcode}
+            onChange={(e) => setFormData({...formData, barcode: e.target.value})}
+          />
+          <Input
+            label="Expiry Date"
+            type="date"
+            value={formData.expiryDate}
+            onChange={(e) => setFormData({...formData, expiryDate: e.target.value})}
+          />
+
+          {/* Full width fields */}
           <div className="form-group full-width">
-            <label>Description</label>
-            <textarea
+            <label>Product Description</label>
+            <textarea 
+              rows="3"
               value={formData.description}
               onChange={(e) => setFormData({...formData, description: e.target.value})}
-              rows="3"
-            />
+            ></textarea>
           </div>
 
-          <div className="form-group">
-            <label>Quantity *</label>
-            <input
-              type="number"
-              value={formData.quantity}
-              onChange={(e) => setFormData({...formData, quantity: e.target.value})}
-            />
-            {errors.quantity && <span className="error">{errors.quantity}</span>}
-          </div>
-
-          <div className="form-group">
-            <label>Category</label>
-            <select
-              value={formData.category}
-              onChange={(e) => setFormData({...formData, category: e.target.value})}
-            >
-              <option value="">Select Category</option>
-              <option value="electronics">Electronics</option>
-              <option value="tools">Tools</option>
-              <option value="materials">Materials</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Storage Location</label>
-            <input
-              type="text"
-              value={formData.location}
-              onChange={(e) => setFormData({...formData, location: e.target.value})}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Supplier</label>
-            <input
-              type="text"
-              value={formData.supplier}
-              onChange={(e) => setFormData({...formData, supplier: e.target.value})}
-            />
-          </div>
+          <RadioGroup
+            label="Status"
+            name="status"
+            options={statusOptions}
+            value={formData.status}
+            onChange={(e) => setFormData({...formData, status: e.target.value})}
+            className="full-width"
+          />
         </div>
 
-        <button type="submit" className="submit-btn">
-          Add SKU
-        </button>
-        
-        {isSubmitted && <div className="success-message">SKU added successfully!</div>}
+        <div className="form-actions">
+          <Button variant="primary" type="submit">Save SKU</Button>
+          <Button variant="secondary" type="button">Cancel</Button>
+        </div>
       </form>
     </div>
   );

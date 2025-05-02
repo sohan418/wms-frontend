@@ -1,0 +1,8 @@
+.page-container {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.section-title {
+  border-bottom: 1px solid var(--border-color);
+}

@@ -1,0 +1,169 @@
+.order-journey {
+  padding: 20px 0;
+}
+
+.order-info {
+  margin-bottom: 30px;
+  padding: 15px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.order-detail {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.order-detail:last-child {
+  margin-bottom: 0;
+}
+
+.order-detail .label {
+  font-weight: 500;
+  min-width: 100px;
+  color: var(--text-color);
+}
+
+.order-detail .value {
+  color: var(--text-color);
+}
+
+.journey-timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+.journey-step {
+  display: flex;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.journey-step:last-child {
+  margin-bottom: 0;
+}
+
+.step-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.step-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--border-color);
+  border: 2px solid var(--bg-color);
+  position: relative;
+  z-index: 2;
+}
+
+.step-line {
+  width: 2px;
+  height: 100%;
+  background: var(--border-color);
+  position: absolute;
+  top: 20px;
+  left: 9px;
+}
+
+.step-content {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+.step-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.step-date {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  margin-top: 8px;
+}
+
+/* Completed step styles */
+.journey-step.completed .step-dot {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.journey-step.completed .step-line {
+  background: var(--primary-color);
+}
+
+/* Current step styles */
+.journey-step.current .step-dot {
+  background: var(--bg-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .order-journey {
+    padding: 10px 0;
+  }
+
+  .order-info {
+    margin-bottom: 20px;
+    padding: 12px;
+  }
+
+  .order-detail {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  .order-detail .label {
+    margin-bottom: 4px;
+  }
+
+  .journey-timeline {
+    padding: 10px 0;
+  }
+
+  .step-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .step-content p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-step {
+    margin-bottom: 20px;
+  }
+
+  .step-indicator {
+    margin-right: 15px;
+  }
+
+  .step-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .step-line {
+    left: 7px;
+  }
+
+  .step-content {
+    padding-bottom: 15px;
+  }
+}
