@@ -27,7 +27,7 @@ function App() {
       <Router>
         <Routes>
           {/* Public route */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           
           {/* Authenticated routes */}
           <Route element={<Layout />}>
